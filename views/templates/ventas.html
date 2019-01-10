@@ -1,0 +1,94 @@
+{include file='views/inc/header_ventas.html'}
+<body>
+  <main class="col-xs-12"style="padding:0">
+    <div class="row-around">
+
+      <section class="col-xs-12 col-sm-5 col-lg-1">
+        <div class="categoria">
+          <ul>
+              <li>
+                <a class="btn_categorias" id="btn_tacos">MENU</a></li>
+          </ul>
+        </div>
+       </section>
+
+       <section class="col-xs-12 col-sm-7 col-lg-6">
+        <div class="fondo">
+          <div id="div_mesas" class="closter_mesas">
+            <!-- <button type="button" name="button" class="diseno_m">Mesas</button> -->
+         </div>
+        </div>
+       </section>
+
+      <section class="col-xs-12 col-sm-12 col-lg-4">
+        <div class="registro">
+          <div class="cuenta-head">
+            Cuenta
+          </div>
+          <hr><br>
+
+          <table class="tabla col-xs-12">
+            <thead>
+              <tr>
+                <th># Id</th>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+
+            <tbody id="cuenta">
+              <tr>
+                <td></td>
+                <td></td>
+                <td>00.00</td>
+                <td>0</td>
+                <td>00.00</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="3"></td>
+                <td>TOTAL</td>
+                <td>$</td>
+              </tr>
+            </tfoot>
+          </table><br>
+
+          <div class="row-between col-xs-12">
+            <button class="btn primary" type="button">
+              <i class="fas fa-percentage"></i> Dividir cuenta
+            </button>
+            <button class="btn primary" type="button">
+              <i class="far fa-hand-point-left"></i> Cambiar Productos
+            </button>
+            <button class="btn danger" type="button">
+              <i class="fas fa-times"></i> Cancelar Cuenta
+            </button>
+            <button id="btn_pagar" class="btn success" type="button">
+              <i class="fas fa-money-check-alt"></i> Pagar
+            </button>
+          </div><br>
+
+          <ul style="list-style: none">
+            <li id="li_mesa"></li>
+            <li id="li_cliente"></li>
+            <li id="li_no_px"></li>
+            <li id="li_estado"></li>
+          </ul><br>
+
+        </div>
+      </section>
+    </div>
+  </main>
+  {include file="views/templates/ventas/descuentos.tpl"}
+  {include file="views/templates/ventas/ajustes.tpl"}
+  {include file="views/templates/ventas/form_agregar_productos.tpl"}
+  {include file="views/templates/ventas/form_agregar_mesa.tpl"}
+  {include file="views/templates/ventas/form_cuentas.tpl"}
+  {include file="views/templates/ventas/recursos_ventas.tpl"}
+  <script>
+  tabs('#ajustes_tabs');
+  </script>
+</body>

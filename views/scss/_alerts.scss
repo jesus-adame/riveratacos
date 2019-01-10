@@ -1,0 +1,39 @@
+.alert {
+  position: fixed;
+  right: 0;
+  bottom: 15vh;
+  width: 500px;
+  height: 200px;
+  box-shadow: 2px 2px 2px #141414;
+  & .alert-header, & .alert-body {
+    padding: 15px 20px;
+  }
+  & .content {
+    width: 98%;
+    overflow: hidden;
+    animation-name: mostrarAlerta;
+    animation-duration: 0.7s;
+    & h3 {
+      font-size: 20px
+    }
+    & p {
+      font-size: 18;
+    }
+  }
+}
+
+.alert-primary {
+  background: #2977bf;
+  color: #d2e7fc;
+}
+
+@keyframes mostrarAlerta {
+  from {
+    bottom: -300px;
+    opacity: 0.5;
+  }
+  to {
+    bottom: 0;
+    opacity: 1;
+  }
+}

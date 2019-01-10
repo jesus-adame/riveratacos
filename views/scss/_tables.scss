@@ -1,0 +1,53 @@
+/*--------------------------- table ---------------------------*/
+.tabla {
+  border-collapse: collapse;
+  margin-bottom: 10px;
+  border: 1px solid #A0A0A0;
+  border-radius: 3px;
+  text-align: center;
+
+  & th, td {
+    border: 1px solid #A0A0A0;
+  }
+  & td {
+    padding: 3px 5px;
+  }
+
+  & thead {
+    padding: 15px;
+    font-size: 16px;
+    background: #c1c1c1;
+    & th {
+      padding: 10px;
+      color: #333333;
+    }
+  }
+
+  & tbody tr:nth-child(even) {
+    background: #e8e8e8;
+  }
+
+  & tbody tr:nth-child(odd) {
+    background: #fff;
+  }
+
+  & tfoot {
+    background: #dcfcd4;
+    & .total {
+      background: #7EC97E;
+    }
+  }
+}
+
+.sin-borde {
+  border: 1px solid #aeaeae;
+  & tr:nth-child(even) {
+    background: #ededed;
+  }
+  & td {
+    border: 0;
+    padding: 3px 5px;
+  }
+}
+
+/*------------------------- end table -------------------------*/

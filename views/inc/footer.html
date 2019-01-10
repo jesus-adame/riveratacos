@@ -1,0 +1,26 @@
+    <footer class="footer">
+
+      <div class="wrapper row-between">
+        <address>
+          <small>Copyright RiveraTacos {date('Y')} &copy;</small>
+        </address>
+
+        <div>
+          {if isset($smarty.session.usuario)}
+          <button onclick="cerrarSesion()" class="btn" type="button" name="sesion">
+            <i class="fas fa-sign-out-alt"></i> Salir
+          </button>
+          {else}
+          <button onclick="mostrarFormulario()" class="btn" type="button" name="sesion">
+            <i class="fas fa-sign-in-alt"></i> Login
+          </button>
+          {/if}
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="views/js/form_inicio_sesion.js"></script>
+    <script src="views/js/sesion_ajax.js"></script>
+  </body>
+</html>

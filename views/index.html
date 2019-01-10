@@ -1,0 +1,63 @@
+{include file='views/inc/header.html'}
+  <main>
+    <div class="wrapper">
+      <h1>{$titulo}</h1>
+    </div>
+
+    <div class="jumbotron">
+      <div class="wrapper">
+        <header>
+          <h3>Código de Honor</h3>
+        </header><br>
+
+        <ul class="text-center" style="list-style: none">
+          <li>El servicio al cliente es lo primero</li>
+          <li>La honestidad nos caracteriza</li>
+          <li>Calidad de clase mundial</li>
+        </ul><br>
+
+        <footer>
+          <address><small>Actualizado en {$fecha}</small> </address>
+        </footer>
+      </div>
+    </div>
+
+    <section class="wrapper">
+      <div class="mural col-xs-10 col-md-7">
+        <div class="mural-header row-between">
+          <h3>Noticias</h3>
+          <button class="btn primary" type="button" name="button">Agregar</button>
+        </div>
+        <hr><br>
+
+        <ul>
+          <li class="row-between">
+            <p class="">
+              Ejemplo noticia Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p><br>
+            <div>
+              <button class="btn atention" type="button" name="button">Editar</button>
+              <button class="btn danger" type="button" name="button">Eliminar</button>
+            </div>
+          </li><br>
+
+          <li class="row-between">
+            <p class="">
+              Ejemplo noticia Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+               sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+               Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+               Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, anim id est laborum.
+            </p><br>
+            <div>
+              <button class="btn atention" type="button" name="button">Editar</button>
+              <button class="btn danger" type="button" name="button">Eliminar</button>
+            </div>
+          </li><br>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+{include file='views/inc/footer.html'}

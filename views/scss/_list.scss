@@ -1,0 +1,11 @@
+.list {
+  background: #c30f50;
+  width: 10%;
+  height: 80%;
+  & ul li {
+    background: #ffffff;
+    color: #fa1165;
+    margin: 1;
+    border: 1;
+  }
+}

@@ -43,8 +43,4 @@ switch ($view) {
   case 'index':
     include 'core/controllers/'. $view .'Controller.php';
     break;
-
-  default:
-    header('location: '. $view);
-    break;
 }

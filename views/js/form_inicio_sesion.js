@@ -1,25 +1,39 @@
+addEventListener('DOMContentLoaded', () => {
+  const cerrarModal = modal_sesion.querySelector('.close'),
+  fondo = modal_sesion.querySelector('.content');
 
-let cerrar_form_sesion = document.querySelector('#cerrar_form_sesion')
-let modal_sesion = document.querySelector('#inicio_sesion')
-let content_sesion = document.querySelector('#content_sesion')
-let form_sesion = document.querySelector('#form_sesion')
+  cerrarModal.addEventListener('click', () => {
+    ocultarFormulario();
+  });
 
+  fondo.addEventListener('click', (e) => {
+    if (e.target == fondo) {
+      ocultarFormulario();
+    }
+  });
 
-cerrar_form_sesion.addEventListener('click', function() {
-  ocultarFormulario()
-})
+  btn_login.addEventListener('click', () => {
+    mostrarFormulario();
+  });
+});
 
-content_sesion.addEventListener('click', function(e) {
-  if (e.target == content_sesion) {
-    ocultarFormulario()
-  }
-})
+btn_logout.addEventListener('click', () => {
+  cerrarSesion()
+  .then(data => {
+    if (data == 'success') {
+      alert('Has cerrado sesion');
+      location.reload();
+    }
+  });
+});
 
 function mostrarFormulario() {
-  modal_sesion.style.display = 'block'
+  modal_sesion.style.display = 'block';
+  const focus = form_sesion.querySelectorAll('input')[0];
+  focus.focus();
 }
 
 function ocultarFormulario() {
-  modal_sesion.style.display = 'none'
-  form_sesion.reset()
+  modal_sesion.style.display = 'none';
+  form_sesion.reset();
 }

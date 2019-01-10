@@ -1,38 +1,10 @@
-let btnSesion = document.querySelector('#btn_iniciar_sesion')
-let formSesion = document.querySelector('#form_sesion')
-
-btnSesion.addEventListener('click', (e) => {
+btn_iniciar_sesion.addEventListener('click', (e) => {
   iniciarSesion(e)
-})
-
-function cerrarSesion() {
-  fetch('core/ajax/cerrarSesionAjax.php', {
-    method: 'POST'
-  })
-  .then(res => res.json())
   .then(data => {
     if (data == 'success') {
-      alert('Has cerrado sesion')
-      location.reload()
-    }
-  })
-}
-
-function iniciarSesion(e) {
-  e.preventDefault()
-  var datos = new FormData(formSesion)
-
-  fetch(formSesion.getAttribute('action'), {
-    method: formSesion.getAttribute('method'),
-    body: datos
-  })
-
-  .then(res => res.json())
-  .then(data => {
-    if (data == 'success') {
-      alert('Se ha iniciado sesión')
-      location.reload()
-      ocultarFormulario()
+      ocultarFormulario();
+      alert('Se ha iniciado sesión');
+      location.reload();
 
     } else if (data == 'not_record') {
       alert('Error en el usuario o contraseña')
@@ -40,5 +12,23 @@ function iniciarSesion(e) {
     } else if (data == 'empty_fields') {
       alert('Debe rellenar todos los campos')
     }
+  });
+});
+
+function cerrarSesion() {
+  return result = fetch('core/ajax/cerrarSesionAjax.php', {
+    method: 'POST'
   })
+  .then(res => res.json());
+}
+
+function iniciarSesion(e) {
+  e.preventDefault();
+  let datos = new FormData(form_sesion);
+
+  return result = fetch(form_sesion.getAttribute('action'), {
+    method: form_sesion.getAttribute('method'),
+    body: datos
+  })
+  .then(res => res.json());
 }

@@ -20,29 +20,29 @@
                 <i class="fas fa-home"></i> Inicio
               </a>
             </li>
-            {if $smarty.session}
-            {if $smarty.session.nivel eq 'ventas' || $smarty.session.nivel eq 'root'}
+            {if $nivel}
+            {if $nivel eq 'ventas' || $nivel eq 'root'}
               <li>
                 <a class="col-xs-12" href="ventas">
                   <i class="fas fa-shopping-bag"></i> Ventas
                 </a>
               </li>
             {/if}
-            {if $smarty.session.nivel eq 'admin' || $smarty.session.nivel eq 'root'}
+            {if $nivel eq 'admin' || $nivel eq 'root'}
             <li>
               <a class="col-xs-12" href="administracion">
                 <i class="fas fa-chart-line"></i> ADMON
               </a>
             </li>
             {/if}
-            {if $smarty.session.nivel eq 'almacen' || $smarty.session.nivel eq 'root'}
+            {if $nivel eq 'almacen' || $nivel eq 'root'}
             <li>
               <a class="col-xs-12" href="almacen">
                 <i class="fas fa-clipboard-list"></i> Almacen
               </a>
             </li>
             {/if}
-            {if $smarty.session.nivel eq 'rh' || $smarty.session.nivel eq 'root'}
+            {if $nivel eq 'rh' || $nivel eq 'root'}
             <li>
               <a class="col-xs-12" href="recursoshumanos">
                 <i class="fas fa-users"></i> R.H.

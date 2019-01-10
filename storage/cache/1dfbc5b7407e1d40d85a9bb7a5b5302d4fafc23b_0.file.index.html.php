@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2018-11-29 07:10:33
+/* Smarty version 3.1.33, created on 2019-01-10 20:06:05
   from 'C:\xampp\htdocs\riveratacos\views\index.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5bff82d99cedf4_57653743',
+  'unifunc' => 'content_5c37979d929e23_16020918',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1dfbc5b7407e1d40d85a9bb7a5b5302d4fafc23b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\riveratacos\\views\\index.html',
-      1 => 1543471322,
+      1 => 1547145814,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:views/inc/footer.html' => 1,
   ),
 ),false)) {
-function content_5bff82d99cedf4_57653743 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5c37979d929e23_16020918 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:views/inc/header.html', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
   <main>

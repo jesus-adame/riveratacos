@@ -27,7 +27,7 @@ addEventListener('DOMContentLoaded', () => {
   /*
     Peticiones AJAX
   */
-  form.addEventListener('submit', (e) => {
+  form_mesa.addEventListener('submit', (e) => {
     e.preventDefault();
     let datos = new FormData(form_mesa);
 

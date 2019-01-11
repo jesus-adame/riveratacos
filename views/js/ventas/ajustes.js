@@ -1,24 +1,14 @@
-let cerrar_ajustes = document.querySelector('#cerrar_ajustes')
-let modal_ajustes = document.querySelector('#modal_ajustes')
-let content_ajustes = document.querySelector('#content_ajustes')
-let form_ajustes = document.querySelector('#form_ajustes')
+addEventListener('DOMContentLoaded', () => {
+  const controlModal = new Modal('modal_ajustes');
 
+  btn_ajustes.addEventListener('click', (e) => {
+    e.preventDefault();
+    controlModal.abrirModal();
+  })
 
-cerrar_ajustes.addEventListener('click', function() {
-  ocultarAjustes()
+  window.addEventListener('click', (e) => {
+    if (e.target == controlModal.fondo_modal || e.target == controlModal.btn_close) {
+      controlModal.cerrarModal();
+    }
+  })
 })
-
-content_ajustes.addEventListener('click', function(e) {
-  if (e.target == content_ajustes) {
-    ocultarAjustes()
-  }
-})
-
-function mostrarModalAjustes() {
-  modal_ajustes.style.display = 'block'
-}
-
-function ocultarAjustes() {
-  modal_ajustes.style.display = 'none'
-  form_ajustes.reset()
-}

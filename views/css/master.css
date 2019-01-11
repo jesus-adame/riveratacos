@@ -665,6 +665,12 @@ input:checked + .slider {
   justify-content: space-around;
 }
 
+.row-right {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
 .list {
   background: #c30f50;
   width: 10%;
@@ -904,7 +910,7 @@ img {
   background: #cccccc;
   display: inline-block;
   text-decoration: none;
-  padding: 20px;
+  padding: 12px 15px;
   border: solid 1px #c1c1c1;
   border-bottom: 0;
   position: relative;
@@ -912,7 +918,7 @@ img {
 }
 .tabs .active {
   background: #f1f1f1;
-  padding-bottom: 21px;
+  padding-bottom: 13px;
 }
 
 .tab_content {

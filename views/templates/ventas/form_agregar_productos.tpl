@@ -64,16 +64,15 @@
             </div> -->
           </div>
 
-          <div class="col-xs-5">
+          <div class="col-xs-5" style="overflow: auto; max-height: 65vh">
             <table class="tabla col-xs-12">
               <thead>
                 <tr>
-                  <th>Cant.</th>
+                  <th>Cant</th>
                   <th>Producto</th>
-                  <th>IVA</th>
                   <th>Precio</th>
                   <th>Total</th>
-                  <th>Empleado</th>
+                  <th>Mesero</th>
                   <th>Borrar</th>
                 </tr>
               </thead>
@@ -101,7 +100,9 @@
           </div>
         </div>
 
-        <button id="btn_agregar_p" class="btn primary" type="submit" name="button">Cargar</button>
+        <div class="row-right col-xs-12">
+          <button id="btn_agregar_p" class="btn success" type="submit" name="button">Cargar</button>
+        </div>
       </form>
     </div>
     </div>

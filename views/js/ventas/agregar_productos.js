@@ -1,20 +1,3 @@
-class Carrito {
-  constructor() {
-    this.total = 0
-  }
-
-  sumar(valor) {
-    this.total = this.total + parseFloat(valor);
-  }
-
-  restar(valor) {
-    this.total = this.total - parseFloat(valor);
-  }
-
-  getTotal() {
-    return this.total;
-  }
-}
 const carro = new Carrito();
 
 addEventListener('DOMContentLoaded', () => {
@@ -36,7 +19,27 @@ addEventListener('DOMContentLoaded', () => {
       obtenerCuentas(id);
     })
     .then(() => modal_productos.style.display = 'block')
+
+    obtenerMesas()
+    .then(dataJson => {
+      for (let i in dataJson) {
+        let item = dataJson[i];
+
+        select_mesas.innerHTML += `
+        <option value="${item.id_mesa}">Mesa ${item.id_mesa}</option>`;
+      }
+    });
   })
+
+  obtenerMesas()
+  .then(dataJson => {
+    for (let i in dataJson) {
+      let item = dataJson[i];
+
+      select_mesas.innerHTML += `
+      <option value="${item.id_mesa}">Mesa ${item.id_mesa}</option>`;
+    }
+  });
 
   select_mesas.addEventListener('change', (e) => {
     let id_mesa = e.target.value;
@@ -64,7 +67,6 @@ addEventListener('DOMContentLoaded', () => {
               $ ${item.precio}
               </p>
               <input type="hidden" class="precio" value="${item.precio}">
-              <input type="hidden" class="iva" value="${item.iva}">
               <input class="cantidad col-xs-12" type="number" placeholder="Cantidad" min="0" max="200">
               <button class="btn primary" type="button" id_prod="${item.id_producto}">Cargar</button>
             </div>`;
@@ -74,16 +76,6 @@ addEventListener('DOMContentLoaded', () => {
           alert('No hay productos disponibles');
         }
       }).then(textHTML => tabla_productos.innerHTML = textHTML);
-
-      obtenerMesas()
-      .then(dataJson => {
-        for (let i in dataJson) {
-          let item = dataJson[i];
-
-          select_mesas.innerHTML += `
-          <option value="${item.id_mesa}">Mesa ${item.id_mesa}</option>`;
-        }
-      });
     });
   }
 
@@ -168,13 +160,10 @@ tabla_productos.addEventListener('click', (e) => {
       id_prod: id_prod,
       name: div.firstChild.data.trim(),
       cantidad: parseInt(div.querySelector('.cantidad').value),
-      precio: parseFloat(div.querySelector('.precio').value),
-      iva: div.querySelector('.iva').value,
+      precio: parseFloat(div.querySelector('.precio').value)
     }
 
-    subtotal = producto.cantidad * producto.precio
-
-
+    subtotal = producto.cantidad * producto.precio;
     cargar_producto(producto, input_cantidad, subtotal);
   }
 })
@@ -186,7 +175,6 @@ function cargar_producto(obj, input, subtotal) {
     <tr>
       <td>${obj.cantidad}</td>
       <td>${obj.name}</td>
-      <td>16%</td>
       <td>$${obj.precio.toFixed(2)}</td>
       <td class="subtotal" number="${subtotal.toFixed(4)}">$${subtotal.toFixed(2)}</td>
       <td>JUAN</td>

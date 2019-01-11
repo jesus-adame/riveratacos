@@ -17,8 +17,7 @@ addEventListener('DOMContentLoaded', () => {
     .then(dataJson => {
       let id = dataJson[0].id_mesa;
       obtenerCuentas(id);
-    })
-    .then(() => modal_productos.style.display = 'block')
+    }).then(() => modal_productos.style.display = 'block')
 
     obtenerMesas()
     .then(dataJson => {

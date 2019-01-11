@@ -1,13 +1,11 @@
 <div id="modal_productos" class="modal">
-  <div id="content_productos" class="content">
-
+  <div class="content">
     <div class="window col-xs-11">
 
-      <div class="modal-header">
-        <h3>Productos</h3>
-        <a id="cerrar_modal_productos" class="close">&times;</a>
-      </div>
-
+    <div class="modal-header">
+      <h3>Productos</h3>
+      <a class="close">&times;</a>
+    </div>
 
     <div class="modal-body-g">
       <form id="form_productos" class="form" action="core/ajax/datosProductosAjax.php" method="POST">
@@ -70,7 +68,7 @@
             <table class="tabla col-xs-12">
               <thead>
                 <tr>
-                  <th>Cantidad</th>
+                  <th>Cant.</th>
                   <th>Producto</th>
                   <th>IVA</th>
                   <th>Precio</th>
@@ -80,8 +78,7 @@
                 </tr>
               </thead>
               <tbody id="tbody_producto">
-                <!--
-                <tr>
+              <!-- <tr>
                   <td>2</td>
                   <td>TACO</td>
                   <td>16%</td>
@@ -91,18 +88,22 @@
                   <td>
                     <button class="btn danger" type="button" name="button">X</button>
                   </td>
-                </tr>
-              -->
+                </tr> -->
               </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="4" style="text-align: right">Totales</td>
+                  <td id="tfoot_producto"></td>
+                  <td colspan="2"></td>
+                </tr>
+              </tfoot>
             </table>
           </div>
-
         </div>
 
         <button id="btn_agregar_p" class="btn primary" type="submit" name="button">Cargar</button>
       </form>
     </div>
-
     </div>
   </div>
 </div>

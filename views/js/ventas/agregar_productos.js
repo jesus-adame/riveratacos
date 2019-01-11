@@ -1,57 +1,42 @@
-((d) => {
-  const cerrar_modal = d.querySelector('#cerrar_modal_productos'),
-  modal = d.querySelector('#modal_productos'),
-  content_modal = d.querySelector('#content_productos'),
-  form = d.querySelector('#form_productos'),
-  buttons_cat = d.querySelectorAll('.btn_categorias'),
-  tabla_productos = d.querySelector('#tabla_productos');
+class Carrito {
+  constructor() {
+    this.total = 0
+  }
+
+  sumar(valor) {
+    this.total = this.total + parseFloat(valor);
+  }
+
+  restar(valor) {
+    this.total = this.total - parseFloat(valor);
+  }
+
+  getTotal() {
+    return this.total;
+  }
+}
+const carro = new Carrito();
+
+addEventListener('DOMContentLoaded', () => {
+  const btn_cerrar = modal_productos.querySelector('.close'),
+  fondo_modal = modal_productos.querySelector('.content'),
+  form = modal_productos.querySelector('.form'),
+  buttons_cat = modal_productos.querySelectorAll('.btn_categorias');
 
   // SELECT BOXES
   // SELECT MESAS
 
-  const select_mesas = modal.querySelector('#select_mesas'),
-  select_cuentas = modal.querySelector('#select_cuentas');
+  btn_menu.addEventListener('click', (e) => {
+    e.preventDefault();
+    buttons_cat[0].click();
 
-  function obtenerMesas() {
-    let data = new FormData();
-    data.append('accion', 'obtener');
-    select_mesas.innerHTML = '';
-
-    fetch('core/ajax/datosMesasAjax.php', {
-      method: 'POST',
-      body: data
-    }).then(response => response.json())
+    obtenerMesas()
     .then(dataJson => {
-      for (let i in dataJson) {
-        let item = dataJson[i];
-
-        select_mesas.innerHTML += `
-        <option value="${item.id_mesa}">Mesa ${item.id_mesa}</option>`;
-      }
+      let id = dataJson[0].id_mesa;
+      obtenerCuentas(id);
     })
-  }
-
-  function obtenerCuentas(id_mesa) {
-    let data = new FormData();
-    data.append('accion', 'obtener');
-    data.append('id_mesa', id_mesa);
-    select_cuentas.innerHTML = '';
-
-    fetch('core/ajax/datosCuentaAjax.php', {
-      method: 'POST',
-      body: data
-    }).then(response => response.json())
-    .then(dataJson => {
-      for (let i in dataJson) {
-        let item = dataJson[i];
-
-        select_cuentas.innerHTML += `
-        <option value="${item.id_cuenta}">Cuenta ${item.id_cuenta} - ${item.cliente}</option>`;
-
-        console.log(item)
-      }
-    })
-  }
+    .then(() => modal_productos.style.display = 'block')
+  })
 
   select_mesas.addEventListener('change', (e) => {
     let id_mesa = e.target.value;
@@ -63,96 +48,160 @@
     let item = buttons_cat[i];
 
     item.addEventListener('click', (e) => {
-      productosDisponibles(item.id);
-      modal.style.display = 'block';
-      obtenerMesas();
-    })
-  }
+      productosDisponibles(item.id)
+      .then(dataJson => {
+        let textHTML = '';
+        tabla_productos.innerHTML = '';
 
-  cerrar_modal.addEventListener('click', function() {
-    ocultarModal()
-  })
+        if (dataJson != 'fail') {
+          for (let i in dataJson) {
+            let item = dataJson[i];
 
-  content_modal.addEventListener('click', function(e) {
-    if (e.target == content_modal) {
-      ocultarModal()
-    }
-  })
+            textHTML += `
+            <div class="col-xs-12">
+              ${item.nombre}
+              <p style="text-align: center">
+              $ ${item.precio}
+              </p>
+              <input type="hidden" class="precio" value="${item.precio}">
+              <input type="hidden" class="iva" value="${item.iva}">
+              <input class="cantidad col-xs-12" type="number" placeholder="Cantidad" min="0" max="200">
+              <button class="btn primary" type="button" id_prod="${item.id_producto}">Cargar</button>
+            </div>`;
+          }
+          return textHTML;
+        } else {
+          alert('No hay productos disponibles');
+        }
+      }).then(textHTML => tabla_productos.innerHTML = textHTML);
 
-  function ocultarModal() {
-    modal.style.display = 'none'
-    form.reset()
-  }
-
-  // LISTAR PRODUCTOS EN EL FORMUALRIO
-  const productosDisponibles = (btn) => {
-    let tabla_productos = d.querySelector('#tabla_productos');
-    tabla_productos.innerHTML = '';
-
-    let data = new FormData();
-    data.append('categoria', btn);
-
-    fetch('core/ajax/datosProductosAjax.php', {
-      method: 'POST',
-      body: data
-    })
-    .then(response => response.json())
-    .then(dataJson => {
-      if (dataJson != 'fail') {
+      obtenerMesas()
+      .then(dataJson => {
         for (let i in dataJson) {
           let item = dataJson[i];
 
-          tabla_productos.innerHTML += `
-          <div class="col-xs-12">
-            ${item.nombre}
-            <input class="col-xs-12" type="number" placeholder="Cantidad" min="0" max="200" value="1">
-            <button class="btn primary" type="button" id_prod="${item.id_producto}">Cargar</button>
-          </div>`;
+          select_mesas.innerHTML += `
+          <option value="${item.id_mesa}">Mesa ${item.id_mesa}</option>`;
         }
-      } else {
-        alert('No hay productos disponibles');
-      }
-    }).catch(error => {
-      console.log('Error en Ajax: ' + error.message);
-    })
+      });
+    });
   }
 
-  // TABLA DE PRODUCTOS
+  // CARRITO DE PRODUCTOS
+  tbody_producto.addEventListener('click', (e) => {
+    let element = e.target,
+    classButton = element.className,
+    row = element.parentElement.parentElement,
+    val = parseFloat(row.querySelector('.subtotal').getAttribute('number'));
 
-  tabla_productos.addEventListener('click', (e) => {
-    const item = e.target;
-
-    if (item.className == 'btn primary') {
-      let id_prod = item.getAttribute('id_prod'),
-      input_cantidad = item.parentNode.firstElementChild;
-      cargar_producto(id_prod, input_cantidad);
+    if (classButton == 'btn danger') {
+      row.remove();
+      carro.restar(val);
+      tfoot_producto.textContent = '$' + carro.getTotal().toFixed(2);
     }
-
   })
 
-  function cargar_producto(id_prod, input_cantidad) {
-    const tbody = document.getElementById('tbody_producto');
-
-    let cant = input_cantidad.value;
-
-    if (cant >= 1) {
-      tbody.innerHTML += `
-      <tr>
-        <td>${cant}</td>
-        <td>${id_prod}</td>
-        <td>16%</td>
-        <td>$ 18</td>
-        <td>$ 64</td>
-        <td>JUAN</td>
-        <td>
-          <button class="btn danger" type="button" name="button">X</button>
-        </td>
-      </tr>`;
-    } else {
-      alert('Debe agregar una cantidad')
+  window.addEventListener('click', (e) => {
+    if (e.target == fondo_modal || e.target == btn_cerrar) {
+      modal_productos.style.display = 'none';
+      form.reset();
     }
-    cant = '';
+  })
+})
+
+function obtenerMesas() {
+  let data = new FormData();
+  data.append('accion', 'obtener');
+  select_mesas.innerHTML = '';
+
+  return result = fetch('core/ajax/datosMesasAjax.php', {
+    method: 'POST',
+    body: data
+  }).then(response => response.json());
+}
+
+function obtenerCuentas(id_mesa) {
+  let data = new FormData();
+  data.append('accion', 'obtener');
+  data.append('id_mesa', id_mesa);
+  select_cuentas.innerHTML = '';
+
+  fetch('core/ajax/datosCuentaAjax.php', {
+    method: 'POST',
+    body: data
+  }).then(response => response.json())
+  .then(dataJson => {
+    for (let i in dataJson) {
+      let item = dataJson[i];
+
+      select_cuentas.innerHTML += `
+      <option value="${item.id_cuenta}">Cuenta ${item.id_cuenta} - ${item.cliente}</option>`;
+    }
+  })
+}
+
+// LISTAR PRODUCTOS EN EL FORMUALRIO
+const productosDisponibles = (btn) => {
+  let data = new FormData();
+  data.append('categoria', btn);
+
+  return promise = fetch('core/ajax/datosProductosAjax.php', {
+    method: 'POST',
+    body: data
+  }).then(response => response.json())
+  .catch(error => {
+    console.log('Error en Ajax: ' + error.message);
+  });
+}
+
+// TABLA DE PRODUCTOS
+
+tabla_productos.addEventListener('click', (e) => {
+  const item = e.target;
+
+  if (item.className == 'btn primary') {
+    let id_prod = item.getAttribute('id_prod'),
+    div = item.parentElement,
+    input_cantidad = div.querySelector('.cantidad');
+
+    let producto = {
+      id_prod: id_prod,
+      name: div.firstChild.data.trim(),
+      cantidad: parseInt(div.querySelector('.cantidad').value),
+      precio: parseFloat(div.querySelector('.precio').value),
+      iva: div.querySelector('.iva').value,
+    }
+
+    subtotal = producto.cantidad * producto.precio
+
+
+    cargar_producto(producto, input_cantidad, subtotal);
   }
+})
+
+function cargar_producto(obj, input, subtotal) {
+
+  if (obj.cantidad >= 1) {
+    tbody_producto.innerHTML += `
+    <tr>
+      <td>${obj.cantidad}</td>
+      <td>${obj.name}</td>
+      <td>16%</td>
+      <td>$${obj.precio.toFixed(2)}</td>
+      <td class="subtotal" number="${subtotal.toFixed(4)}">$${subtotal.toFixed(2)}</td>
+      <td>JUAN</td>
+      <td>
+        <button class="btn danger" type="button" name="button">X</button>
+      </td>
+    </tr>`;
+    input.value = '';
+
+    carro.sumar(subtotal);
+    tfoot_producto.textContent = '$' + carro.getTotal().toFixed(2);
+  } else {
+    alert('Debe agregar una cantidad')
+  }
+}
 
 /* OBTIENE EL DETALLE DE LA CUENTA
   form.addEventListener('submit', (e) => {
@@ -177,5 +226,3 @@
       console.log('Ocurrio un error ' + error.message);
     })
   })*/
-
-})(document);

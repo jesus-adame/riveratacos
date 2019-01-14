@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-01-10 21:27:10
+/* Smarty version 3.1.33, created on 2019-01-13 22:47:34
   from 'C:\xampp\htdocs\riveratacos\views\templates\form_sesion.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5c37aa9e48dfa1_26791155',
+  'unifunc' => 'content_5c3bb1f6892e61_16079257',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0aa6d5b14554226a719f66f636bfff714f296a90' => 
     array (
       0 => 'C:\\xampp\\htdocs\\riveratacos\\views\\templates\\form_sesion.tpl',
-      1 => 1547151965,
+      1 => 1547228151,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5c37aa9e48dfa1_26791155 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5c3bb1f6892e61_16079257 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div id="modal_sesion" class="modal" >
   <div class="content">
     <div class="window col-xs-8 col-md-4">

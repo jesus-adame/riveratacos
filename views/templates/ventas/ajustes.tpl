@@ -1,20 +1,20 @@
 <div id="modal_ajustes" class="modal">
   <div class="content">
-    <div class="window col-xs-8">
+    <div class="window col-xs-11 col-md-10">
 
       <div class="modal-header">
         <h3><i class="fas fa-cogs"></i> Ajustes</h3>
         <a class="close">&times;</a>
       </div>
 
-      <div class="modal-body">
+      <div class="modal-body" style="max-height: 80vh; overflow: auto">
         <div id="ajustes_tabs">
 
           <ul class="tabs">
             <li>
               <a href="#tab1" class="tab active">Categorias</a> </li>
             <li>
-              <a href="#tab2" class="tab">Mesas</a> </li>
+              <a href="#tab2" class="tab">Productos</a> </li>
             <li>
               <a href="#tab3" class="tab">Mesas</a> </li>
           </ul>
@@ -66,24 +66,32 @@
                     </div>
                   </div>
                 </div>
-
               </form>
             </div>
 
             <div id="tab2" class="tab_content">
-              <table class="tabla col-xs-8">
+              <table class="tabla col-xs-12">
                 <thead>
                   <tr>
                     <th>Id</th>
                     <th>Producto</th>
                     <th>Precio Unitario</th>
+                    <th>Ganancia</th>
+                    <th>
+                      <button class="btn success" type="button">Agregar</button>
+                    </th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody id="ajustes_tbody_productos">
                   <tr>
                     <td></td>
                     <td></td>
                     <td>00.00</td>
+                    <td></td>
+                    <td>
+                      <button class="btn atention" type="button" name="button">Editar</button>
+                      <button class="btn danger" type="button" name="button">Eliminar</button>
+                    </td>
                   </tr>
                 </tbody>
               </table>

@@ -40,6 +40,13 @@ switch ($view) {
     include 'core/controllers/'. $view .'Controller.php';
     break;
 
+  case 'ajustes_ventas':
+    if ($_SESSION['nivel'] != 'ventas' && $_SESSION['nivel'] != 'root') {
+      $view = 'index';
+    }
+    include 'core/controllers/'. $view .'Controller.php';
+    break;
+
   case 'index':
     include 'core/controllers/'. $view .'Controller.php';
     break;

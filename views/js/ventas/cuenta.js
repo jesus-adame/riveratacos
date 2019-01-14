@@ -8,7 +8,7 @@ addEventListener('DOMContentLoaded', () => {
   })
 })
 
-let pagarCuenta = (id_cuenta) => {
+const pagarCuenta = (id_cuenta) => {
   let data = new FormData();
   data.append('id_cuenta', id_cuenta);
   data.append('accion', 'pagar');

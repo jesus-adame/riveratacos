@@ -16,9 +16,9 @@
             <h3>MESA</h3>
             <select id="select_mesas" class="form col-xs-11" name="mesa">
               <!--
-                <option value="1">Mesa 1</option>
-                <option value="2">Mesa 2</option>
-                <option value="3">Mesa 3</option>
+              <option value="1">Mesa 1</option>
+              <option value="2">Mesa 2</option>
+              <option value="3">Mesa 3</option>
               -->
             </select>
           </div>
@@ -27,9 +27,9 @@
             <h3>CUENTA</h3>
             <select id="select_cuentas" class="form col-xs-11" name="cuenta">
               <!--
-                <option value="1">Cuenta 1</option>
-                <option value="2">Cuenta 2</option>
-                <option value="3">Cuenta 3</option>
+              <option value="1">Cuenta 1</option>
+              <option value="2">Cuenta 2</option>
+              <option value="3">Cuenta 3</option>
               -->
             </select>
           </div>
@@ -56,11 +56,11 @@
 
           <div id="tabla_productos" class="closter_productos col-md-5">
             <!-- <div class="col-xs-12">
-              <form action="#" method="post">
-                item.nombre
-                <input class="col-xs-12" type="number" placeholder="Cantidad" min="0" max="200">
-                <button class="btn primary" type="button" id_prod="item.id_producto">Cargar</button>
-              </form>
+            <form action="#" method="post">
+              item.nombre
+              <input class="col-xs-12" type="number" placeholder="Cantidad" min="0" max="200">
+              <button class="btn primary" type="button" id_prod="item.id_producto">Cargar</button>
+            </form>
             </div> -->
           </div>
 
@@ -78,20 +78,19 @@
               </thead>
               <tbody id="tbody_producto">
               <!-- <tr>
-                  <td>2</td>
-                  <td>TACO</td>
-                  <td>16%</td>
-                  <td>$ 18</td>
-                  <td>$ 64</td>
-                  <td>JUAN</td>
-                  <td>
-                    <button class="btn danger" type="button" name="button">X</button>
-                  </td>
-                </tr> -->
+                <td>2</td>
+                <td>TACO</td>
+                <td>$ 18</td>
+                <td>$ 64</td>
+                <td>JUAN</td>
+                <td>
+                  <button class="btn danger" type="button" name="button">X</button>
+                </td>
+              </tr> -->
               </tbody>
               <tfoot>
                 <tr>
-                  <td colspan="4" style="text-align: right">Totales</td>
+                  <td colspan="3" style="text-align: right">Totales</td>
                   <td id="tfoot_producto"></td>
                   <td colspan="2"></td>
                 </tr>
